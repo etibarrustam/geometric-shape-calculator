@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entities\Circle;
 use App\Entities\Triangle;
 use App\Services\ShapeCalculator;
+use JsonException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -24,11 +25,12 @@ class ShapeCalculatorController extends AbstractController
 
     /**
      * @return Response
+     * @throws JsonException
      */
     #[Route(path: '/', name: 'index', methods: ['GET'])]
     public function index(): Response
     {
-        return new Response();
+        return new Response(json_encode("Shape calculation service", JSON_THROW_ON_ERROR));
     }
 
     /**
